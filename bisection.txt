@@ -1,0 +1,38 @@
+#include<iostream>
+#include<math.h>
+#define accuracy 0.01
+using namespace std;
+double func(double x)
+{
+    return (x*x*x) + (4*x*x) -10;
+}
+void bisection(double a,double b)
+{
+    if(func(a)*func(b)<0)
+    {
+        double c;
+        while((b-a)>= accuracy){
+            c = (a+b)/2;
+            if(func(c)==0.0)
+            {
+                break;
+            }else if(func(c)*func(a)<0){
+                b= c;
+            }else{
+                a = c;
+            }
+        }
+        cout<<"The root value is : "<<c<<endl;
+    }
+    else{
+        cout << "You have not assumed right a and b\n";
+    }
+}
+int main()
+{
+    double a,b;
+    cin>>a>>b;
+    bisection(a,b);
+    return 0;
+}
+
